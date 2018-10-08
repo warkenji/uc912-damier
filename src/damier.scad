@@ -1,4 +1,4 @@
-module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir = [0, 0, 255], couleurPionBlanc = [255, 0, 0], couleurCaseNoir = [0,0,0], couleurCaseBlanc=[255,255,255])
+module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir = [0, 0, 255], couleurPionBlanc = [255, 0, 0], couleurCaseNoire = [0,0,0], couleurCaseBlanche=[255,255,255])
 {
     nbCase = 10;
     tailleDamier = [1:nbCase];
@@ -10,7 +10,7 @@ module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir = 
         {
             for(j = tailleDamier)
             {
-                couleurCase = (i + j) % 2 == 1 ? couleurCaseBlanc : couleurCaseNoir;
+                couleurCase = (i + j) % 2 == 1 ? couleurCaseBlanche : couleurCaseNoire;
                 //Position
                 translate([tailleCase * (i - nbCase/2 - 1), tailleCase * (j - nbCase/2 - 1), 0]) 
                 //Couleur : Noir/Blanc
