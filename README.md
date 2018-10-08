@@ -2,16 +2,12 @@
 
 ## Paramètres du module: damier
 
-taille (1): taille de la case d'un damier et d'un pion
-
-epaisseurPion (0.25): épaisseur d'un pion
-
-epaisseurCase (0.1): épaisseur d'une case
-
-couleurPionBlanc ([255, 0, 0]): couleur des pions blancs
-
-couleurPionNoir ([0, 0, 255]): couleur des pions noirs
-
-couleurCaseNoire ([0, 0, 0]): couleur des cases noires du damier
-
-couleurCaseBlanches ([255, 255, 255]): couleur des cases blanches du damier
+| Variable | Description | Valeur par défaut |
+| :---: | :---:      | :---: |
+| taille | Taille de chaque case du damier et de chaque pion. | 1 |
+| epaisseurPion | Épaisseur de chaque pion. | 0.25 |
+| epaisseurCase | Taille de la case d'un damier et d'un pion. | 0.1 |
+| couleurPionBlanc | Couleur des pions blancs. | [1, 0, 0] |
+| couleurPionNoir | Couleur des pions noirs. | [0, 0, 1] |
+| couleurCaseNoire | Couleur des cases noires du damier. | [0, 0, 0] |
+| couleurCaseBlanche | Couleur des cases blanches du damier. | [1, 1, 1] |
