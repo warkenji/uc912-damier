@@ -1,45 +1,69 @@
-module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir=[0, 0, 1], couleurPionBlanc=[1, 0, 0], couleurCaseNoire=[0,0,0], couleurCaseBlanche=[1,1,1])
-{
-    nbCase = 10;
-    tailleDamier = [1:nbCase];
+module damier(
+// Taille de chaque case du damier et de chaque pion
+taille=1, 
+// Épaisseur de chaque pion
+epaisseurCase=0.1,
+// Taille de la case d'un damier et d'un pion
+epaisseurPion=0.25,
+// Couleur des pions blancs
+couleurPionNoir=[0, 0, 1],
+// Couleur des pions noirs
+couleurPionBlanc=[1, 0, 0], 
+// Couleur des cases noires du damier
+couleurCaseNoire=[0, 0, 0], 
+// Couleur des cases blanches du damier
+couleurCaseBlanche=[1, 1, 1]
+){
+    //Variable permettant d'arrondir les pièces [0:360]
+    $fn = 360;
     
-    //Case Damier
+    //Nombre de case du damier sur une dimension
+    nbCase = 10;
+    
+    //Tableau d'itération du damier sur une dimension
+    tabDamier = [1:nbCase];
+    
+    //Création et unification des cases
     union()
     {
-        for(i = tailleDamier)
+        for(i = tabDamier)
         {
-            for(j = tailleDamier)
+            for(j = tabDamier)
             {
                 couleurCase = (i + j) % 2 == 1 ? couleurCaseBlanche : couleurCaseNoire;
+                positionCase = [taille * (i - nbCase/2 - 1), taille * (j - nbCase/2 - 1), 0];
+                
                 //Position
-                translate([tailleCase * (i - nbCase/2 - 1), tailleCase * (j - nbCase/2 - 1), 0]) 
-                //Couleur : Noir/Blanc
+                translate(positionCase) 
+                //Couleur
                 color(couleurCase)
-                //Forme : cube aplati
-                cube([tailleCase, tailleCase, epaisseurCase]);
+                //Forme
+                cube([taille, taille, epaisseurCase]);
             }
         }
     }
     
-    //Pion
-    for(i = tailleDamier)
+    //Création des pions
+    for(i = tabDamier)
     {
-        for(j = tailleDamier)
+        for(j = tabDamier)
         {
-            //Test vérifiant si c'est une case noir n'appartenant pas au 2 lignes de case du milieu
+            //Vérifie si c'est une case noir n'appartenant pas au 2 lignes du centre du damier
             if((i + j) % 2 == 0 && (j < 5 || j > 6) )
             {
                 couleurPion = j < 5 ? couleurPionBlanc : couleurPionNoir;
+                positionPion = [taille * (i  - (nbCase + 1) / 2), taille * (j - (nbCase + 1) / 2), epaisseurCase];
+                rayonPion = taille/2;
                 
-                //Position Pion
-                translate([tailleCase * (i  - (nbCase + 1) / 2), tailleCase * (j - (nbCase + 1) / 2), epaisseurCase]) 
+                //Position
+                translate(positionPion)
                 //Couleur
                 color(couleurPion) 
-                //Forme : cylindrique
-                cylinder(r1=tailleCase/2, r2=tailleCase/2, h=epaisseurPion);
+                //Forme
+                cylinder(r1=rayonPion, r2=rayonPion, h=epaisseurPion);
             }
         }
     }
 }
 
-damier(tailleCase=15, epaisseurCase=1, epaisseurPion = 2);
+damier();
