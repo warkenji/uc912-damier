@@ -1,4 +1,4 @@
-module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir = [0, 0, 255], couleurPionBlanc = [255, 0, 0], couleurCaseNoire = [0,0,0], couleurCaseBlanche=[255,255,255])
+module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir=[0, 0, 1], couleurPionBlanc=[1, 0, 0], couleurCaseNoire=[0,0,0], couleurCaseBlanche=[1,1,1])
 {
     nbCase = 10;
     tailleDamier = [1:nbCase];
@@ -14,7 +14,7 @@ module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir = 
                 //Position
                 translate([tailleCase * (i - nbCase/2 - 1), tailleCase * (j - nbCase/2 - 1), 0]) 
                 //Couleur : Noir/Blanc
-                color(couleurCase / 255)
+                color(couleurCase)
                 //Forme : cube aplati
                 cube([tailleCase, tailleCase, epaisseurCase]);
             }
@@ -34,7 +34,7 @@ module damier(tailleCase=1, epaisseurCase=1, epaisseurPion=2, couleurPionNoir = 
                 //Position Pion
                 translate([tailleCase * (i  - (nbCase + 1) / 2), tailleCase * (j - (nbCase + 1) / 2), epaisseurCase]) 
                 //Couleur
-                color(couleurPion / 255) 
+                color(couleurPion) 
                 //Forme : cylindrique
                 cylinder(r1=tailleCase/2, r2=tailleCase/2, h=epaisseurPion);
             }
